@@ -1,0 +1,98 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+
+class UserSeeder extends Seeder
+{
+    public function run()
+    {
+        $admin = User::updateOrCreate(
+            ['email' => 'admin@example.com'],
+            [
+                'name' => 'Admin',
+                'password' => Hash::make('password'),
+                'email_verified_at' => now(),
+            ]
+        );
+        $admin->assignRole('admin');
+
+
+
+        $client = User::updateOrCreate(
+            ['email' => 'testuser@example.com'],
+            [
+                'name' => 'Client',
+                'password' => Hash::make('password123'),
+                'email_verified_at' => now(),
+            ]
+        );
+        $client->assignRole('customer');
+
+        $client1 = User::updateOrCreate(
+            ['email' => 'Ahmed@example.com'],
+            [
+                'name' => 'Ahmed',
+                'password' => Hash::make('password123'),
+                'email_verified_at' => now(),
+            ]
+        );
+        $client1->assignRole('customer');
+
+        $delivery = User::updateOrCreate(
+            ['email' => 'delivry@gmail.com'],
+            [
+                'name' => 'Delivery',
+                'password' => Hash::make('password123'),
+                'email_verified_at' => now(),
+            ]
+        );
+        $delivery->assignRole('delivery');
+
+        $delivery1 = User::updateOrCreate(
+            ['email' => 'delivry-1@gmail.com'],
+            [
+                'name' => 'Delivery',
+                'password' => Hash::make('password123'),
+                'email_verified_at' => now(),
+            ]
+        );
+        $delivery1->assignRole('delivery');
+
+        $delivery2 = User::updateOrCreate(
+            ['email' => 'delivry-2@gmail.com'],
+            [
+                'name' => 'Delivery',
+                'password' => Hash::make('password123'),
+                'email_verified_at' => now(),
+            ]
+        );
+        $delivery2->assignRole('delivery');
+
+
+        $supplier1 = User::updateOrCreate(
+            ['email' => 'supplier1@gmail.com'],
+            [
+                'name' => 'Supplier 1',
+                'password' => Hash::make('password123'),
+                'phone'=>'0621212121',
+                'email_verified_at' => now(),
+            ]
+        );
+        $supplier1->assignRole('supplier');
+
+        $delivery2 = User::updateOrCreate(
+            ['email' => 'supplier2@gmail.com'],
+            [
+                'name' => 'Supplier 2',
+                'password' => Hash::make('password123'),
+                'phone'=>'0621212121',
+                'email_verified_at' => now(),
+            ]
+        );
+        $delivery2->assignRole('supplier');
+    }
+}
